@@ -49,8 +49,8 @@ public class MoneyTransferTest {
         val secondCardBalanceUpdated = dashboardPage.getCurrentBalanceOfSecondCard();
         val rechargedCardBalance = checkBalanceOfCardRecharged(secondCardBalance, amount);
         val refilledCardBalance = checkBalanceOfCardRefilled(firstCardBalance, amount);
-        assertEquals(rechargedCardBalance, firstCardBalanceUpdated);
-        assertEquals(refilledCardBalance, secondCardBalanceUpdated);
+        assertEquals(rechargedCardBalance, secondCardBalanceUpdated);
+        assertEquals(refilledCardBalance, firstCardBalanceUpdated);
     }
 
     @Test
@@ -70,12 +70,9 @@ public class MoneyTransferTest {
 
     @Test
     void shouldTransferExtraLimit() {
-        val firstCardBalance = dashboardPage.getCurrentBalanceOfFirstCard();
-        val secondCardBalance = dashboardPage.getCurrentBalanceOfSecondCard();
         val moneyTransferPage = dashboardPage.clickSecondCardToRefill();
         int amount = 12000;
         moneyTransferPage.moneyTransferCard(getFirstCardInfo(), amount);
         moneyTransferPage.errorTransfer();
     }
-
 }
